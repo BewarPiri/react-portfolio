@@ -49,11 +49,10 @@ jobs:
         with:
           name: node-app
 
-      - name: Unzip artifact and move build folder to root
+      - name: Unzip artifact
         run: |
-          tar -xzf node-app.tar.gz
-          mv build/* .
-          rm -rf build/
+          mkdir unzip
+          tar -xzf node-app.tar.gz -C unzip/
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -62,4 +61,4 @@ jobs:
           app-name: 'bewar-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_556AB4E5DB414EBAA0A009532578E54B }}
-          package: .
+          package: unzip/build
