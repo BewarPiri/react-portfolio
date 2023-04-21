@@ -1,3 +1,7 @@
+Certainly! Here's an updated version of your workflow with the additional step you requested:
+
+yaml
+Copy code
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
@@ -29,8 +33,7 @@ jobs:
       
       - name: Create artifact archive
         run: |
-          tar -czf node-app.tar.gz *
-
+          tar -czf node-app.tar.gz -C build .
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -49,6 +52,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+
+      - name: Unzip artifact and move build folder to root
+        run: |
+          tar -xzf node-app.tar.gz
+          mv build/* .
+          rm -rf build/
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
