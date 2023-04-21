@@ -27,14 +27,15 @@ jobs:
           npm install
           npm run build
       
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-      
+      - name: Create artifact archive
+        run: |
+          tar -czf node-app.tar.gz *
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: release.zip
+          path: ./node-app.tar.gz
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,4 +57,4 @@ jobs:
           app-name: 'bewar-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_556AB4E5DB414EBAA0A009532578E54B }}
-          package: .
+          package: ./node-app.tar.gz
