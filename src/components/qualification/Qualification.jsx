@@ -2,7 +2,7 @@ import React from 'react'
 import './qualification.css'
 import AVATAR1 from '../../assets/Collaboration-Mindset.jpeg'
 import AVATAR2 from '../../assets/technicality.png'
-import AVATAR3 from '../../assets/problem-solver:analytical.jpeg'
+import AVATAR3 from '../../assets/problem-solver-analytical.jpeg'
 import AVATAR4 from '../../assets/communication4.webp'
 import AVATAR5 from '../../assets/stay-up-to-date.avif'
 import {Pagination, Navigation, A11y } from 'swiper';
