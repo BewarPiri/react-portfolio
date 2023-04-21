@@ -61,4 +61,4 @@ jobs:
           app-name: 'bewar-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_556AB4E5DB414EBAA0A009532578E54B }}
-          package: unzip/build
+          package: ./unzip/build/
