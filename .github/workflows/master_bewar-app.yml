@@ -53,11 +53,6 @@ jobs:
         run: |
           mkdir unzip
           tar -xzf node-app.tar.gz -C unzip/
-      
-      - name: files
-        run: |
-          cd unzip
-          ls
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
